@@ -8,7 +8,9 @@
 #### 화면
 -----
 
-<div></div>
+<div>
+<img src ="https://user-images.githubusercontent.com/45492520/67928694-ff991c00-fbfe-11e9-94f7-4b16e98daf8c.png"></img>
+</div>
 
 
 
@@ -46,7 +48,7 @@
 
     <script>
         const app = new Vue({
-            el : '#root',
+            el : '#root', // <div id="root">을 바라봄
             data:{
                 first: Math.ceil(Math.random()*9),
                 second: Math.ceil(Math.random()*9),
