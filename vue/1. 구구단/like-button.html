@@ -1,0 +1,46 @@
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="">
+    <title>좋아요</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <!-- 가급적 리엑트 스타일로 하겠다는 그런 뜻이 -->
+    <div id="root">
+        <div v-if="liked + 1 ===5"> 좋아요 눌렀음</div>
+        <div v-else> 좋아요 안눌럿느데?</div>
+        <button v-on:click="onClickButton">like</button>
+
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#root',
+            data: {
+                liked: false,
+            },
+
+            methods: {
+                onClickButton() {
+                    if (this.liked = true) {
+                        this.liked = false;
+                    }
+                    else {
+                        this.liked = true;
+                    }
+                }
+            }
+
+        })
+
+
+    </script>
+</body>
+</head>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 반영사항을 보려면 먼저 저장을 하고 진행을 해야함-->
+<html>
+
+<head>
+    <Style>
+        .dropdown ul {
+            display: none;
+            list-style: none;
+            margin: 0;
+            border: 1px solid black;
+            padding: 10px;
+            witdh: 100px
+        }
+
+        .dropdown.on ul {
+            display: block;
+        }
+    </Style>
+
+<body>
+    <div id="app">
+        <!--<img :id = "`next_${id}`" :src = "image">-->
+        <button tyle="button" @click="btnClick"> 버튼</button>
+        <div :class="[dropdown, toggle]">
+            <ul>
+                <li><a href="#">메뉴1</a></li> 
+                <li><a href="#">메뉴2</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>  // 이런 형식으로 json에 값을 집어 넣어줄 수 있음
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    id: 1,
+                    image: 'https://picsum.photos/210/118/?image=1',
+                    style: {
+                        background: 'red'
+
+                    },
+                    fontstyle: {
+                        fontSize: '50px',
+                        fontFamily: 'dotum'
+                    },
+                    dropdown: 'dropdown',
+                    toggle: {
+                        on: true // 별도의 클래스 적용 여부를 지정해줄 수 있음
+                    }
+                };
+            },
+            methods: {
+                btnClick() {
+                    this.toggle.on = ! this.toggle.on;
+
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</head>
+
+</html>

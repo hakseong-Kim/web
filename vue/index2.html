@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- 반영사항을 보려면 먼저 저장을 하고 진행을 해야함-->
+ <html>
+     <head>
+        <body>
+            <div id ="app">
+                <ul style= "list-style:none;">
+                    <template v-for="item in items">
+                    <li >
+                         <img :src ="item.image">
+                         <br/>
+                         {{item.title}}
+                    </li>
+
+                    </template>
+
+
+
+                </ul>
+
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                let app = new Vue({
+                    el :'#app',
+                    data() {
+                        return {
+                            items:[
+                        {
+                            id : 1,
+                            image : 'https://picsum.photos/210/118/?image=1',
+                            title: "code1"
+                        },
+                        {
+                            id : 2,
+                            image : 'https://picsum.photos/210/118/?image=100',
+                            title: "code2"
+                        },
+                        {
+                            id : 3,
+                            image : 'https://picsum.photos/210/118/?image=160',
+                            title: "code3"
+                        },
+                        {
+                            id : 4,
+                            image : 'https://picsum.photos/210/118/?image=200',
+                            title: "code4"
+                        },
+
+                        ]
+                        }
+                    }
+
+                })
+            
+
+            
+            </script>
+
+        </body>
+
+     </head>
+ </html>
