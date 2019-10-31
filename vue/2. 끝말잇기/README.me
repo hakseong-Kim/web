@@ -1,0 +1,89 @@
+## 끝말잇기
+
+#### 설명
+-----
+##### - 끝말잇기를 진행, wordRelay.html의 경우 컴포넌트를 사용해서 form을 반복적으로 출력하는 조건이며, 그냥 바로 html 발동하면 진행 
+
+
+#### 화면
+-----
+
+<div>
+<img src ="https://user-images.githubusercontent.com/45492520/67928694-ff991c00-fbfe-11e9-94f7-4b16e98daf8c.png"></img>
+</div>
+
+
+
+#### 소스코드
+-----
+
+```{.http}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="">
+    <title>끝말잇기</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <word-relay startword='제로호'></word-relay>
+        <word-relay startword='바보'></word-relay>
+        <word-relay startword='학성'></word-relay>
+    </div>
+
+    <script>
+        Vue.component('word-relay', // 전역 컴포넌트, 스크립트보다는 위에 root 보다는 밑에다가 해놓는것 으로 하자
+        {
+            template: `
+            <div>
+                <div>{{word}}</div>
+                    <form v-on:submit="onSubmitForm">
+                        <input type="text" v-model="value" ref="answer">
+                        <button type="submit">입력</button>
+                    </form>
+                    <div>{{result}}</div>
+            </div>    
+            `,
+            props:['startword'],
+            data(){
+                return{
+                word: this.startword,
+                value: '',
+                result: '',
+                };
+            },
+            methods: { 
+                onSubmitForm(e) {
+                    e.preventDefault(); // 새로고침을 막기 위해 적용 form 은 버튼 클릭했을때 자동적으로 새로고침이 됨
+                    if (this.word[this.word.length - 1] === this.value[0]) {
+                        this.result = '딩동댕!';
+                        this.word = this.value;
+                        this.value = '';
+                        this.$refs.answer.focus();
+                    }
+                    else {
+                        this.result = '떙';
+                        this.value = '';
+                        this.$refs.answer.focus();
+                    }
+                },
+            }
+        })
+
+    </script>
+    <script>
+        const app = new Vue({
+            el: '#root', // <div id="root"> 을 바라봄
+        });
+
+    </script>
+</body>
+</head>
+</html>
+```
