@@ -23,7 +23,7 @@
 <h3>This is heading 3</h3>
 ```
 
-##### html 단락
+##### html 단락의 설정
 -----
 - ###### `p`태그로 이용해 단락 정의함
 
@@ -31,6 +31,22 @@
 <p>This is a paragraph.</p>
 <p>This is another paragraph.</p>
 ```
+
+- ###### `p`태그로 이용해 단락의 제목를 정의하지만 `pre`요소 내부의 텍스트 는 고정 너비 글꼴 (일반적으로 Courier)로 표시되며 공백과 줄 바꿈을 모두 즉, 내용을 정리한다고 보는게 좋을 것 같음, 한번쯤 비교를 해보는게 어떨까 함
+
+```
+<pre>
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+```
+
+
 
 ##### html 링크
 -----
@@ -123,8 +139,6 @@ This is a paragraph.
 <p title="John 'ShotGun' Nelson"> // 반대로 큰 따옴표 안에 작은 따옴표를 사용한 경우
 ```
 
-
-
 ##### html 수평선
 -----
 - ###### 수평선을 넣어주고 싶을때에는 `hr`태그를 집어 넣어주면 된다
@@ -136,6 +150,92 @@ This is a paragraph.
 <h2>This is heading 2</h2>
 <p>This is some other text.</p>
 <hr>
+```
+
+##### html 배경색
+-----
+- ###### 배경색 지정
+
+```
+<body style="background-color:powderblue;">
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+```
+
+
+
+##### html font 정의
+-----
+- ###### 색상지정
+
+```
+<h1 style="color:blue;">This is a heading</h1>
+<p style="color:red;">This is a paragraph.</p>
+```
+
+- ###### 글꼴
+
+```
+<h1 style="font-family:verdana;">This is a heading</h1>
+<p style="font-family:courier;">This is a paragraph.</p>
+```
+
+- ###### 문자 크기
+
+```
+<h1 style="font-size:300%;">This is a heading</h1>
+<p style="font-size:160%;">This is a paragraph.</p>
+```
+
+- ###### 문자 정렬
+
+```
+<h1 style="text-align:center;">Centered Heading</h1>
+<p style="text-align:center;">Centered paragraph.</p>
+```
+
+
+##### html 글자 정의
+-----
+- ###### 기본 글자 지정
+
+```
+<b> - 굵은 텍스트
+<strong> - 중요한 텍스트(굵은 글씨를 강조)
+<i> - 이탤릭체
+<em> - 강조된 텍스트(이텔릭체를 강조)
+<mark> - 표시된 텍스트, 배경색을 넣어준다
+<small> - 작은 텍스트
+<del> - 삭제 된 텍스트, 텍스트 가운데 줄을 긋는다
+<ins> - 삽입 된 텍스트, 밑줄을 긋는다
+<sub> - 첨자 텍스트, 텍스트가 살짝 아래로 내려간다
+<sup> - 위첨자 텍스트, 텍스트가 살짝 붕 뜬다
+```
+
+
+
+##### html 테두리 정의
+-----
+- ###### 테두리 색상을 정의할 수 있다
+
+```
+<h1 style="border:2px solid Tomato;">Hello World</h1>
+<h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+<h1 style="border:2px solid Violet;">Hello World</h1>
+```
+
+- ###### 참고 - 백그라운드 색상도 정의하고 그리고 색상코드를 이렇게 지정할 수 있다
+
+```
+<h1 style="background-color:rgb(255, 99, 71);">...</h1>
+<h1 style="background-color:#ff6347;">...</h1>
+<h1 style="background-color:hsl(9, 100%, 64%);">...</h1>
+
+<h1 style="background-color:rgba(255, 99, 71, 0.5);">...</h1>
+<h1 style="background-color:hsla(9, 100%, 64%, 0.5);">...</h1>
 ```
 
 
