@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<body>
+    <!-- 목적은 컴포넌트끼리의 통신을 하는 방법을 알고싶다라는 목적으로 만들어지게 됨-->
+
+    <div id="app">
+        <!-- <app-header v-bind:프롭스 속성 이름="상위컴포넌트의 데이터 이름"></app-header> -->
+        <app-header v-bind:propsdata="massage"></app-header>
+        <app-content v-bind:propsdata_2="num"></app-content>
+    </div>
+
+    <script>
+        var appHeader = {
+            template: '<h1>{{propsdata}}</h1>',
+            props: ['propsdata']
+        }
+
+
+        var appContent = {
+            template: '<div>{{propsdata_2}}</div>',
+            props: ['propsdata_2']
+        }
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header': appHeader, // 자리가 많이 차지할까봐 위에 변수를 만들어서 데이터를 집어넣어줬음.
+                // 그냥 안에다가 만들어도 크게 상관은 없음
+                'app-content': appContent
+
+            },
+            data : {
+                massage: 'hiyo',
+                num : 10
+            }
+        })
+    </script>
+</body>
+</html>
