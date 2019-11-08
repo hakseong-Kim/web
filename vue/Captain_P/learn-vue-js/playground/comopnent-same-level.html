@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 2,4 . 데이터를 보내는쪽은 v-on 을 통해서 root의 num 값을 삭제, 그 다음 v-bind의 propsdata 을 통해서 데이터 값을 component에 집어넣어줌  -->
+        <!-- <app-header v-binds:프롭스 속성 이름 = "상위 컴포넌트의 데이터 이름"></app-header> -->
+        <app-header v-bind:propsdata = "num"></app-header>
+        <app-content v-on:pass="deliverNum"></app-content>
+        {{num}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        // 같은 레벨의 컴포넌트에 데이터를 전달하기
+        // 보내는 쪽의 컴포넌트는 event 형식으로 데이터를 보내고
+
+        // 받는 쪽의 컴포넌트는 props 형식으로 데이터를 받는다.
+
+
+         //3. 데이터를 받기 위해 propsdata 를 만들어줌
+    var appHeader = {
+        props: ['propsdata'],
+        template: '<div>header</div>'
+    }
+
+        //1. 먼저 appcontent  컴포넌트에서 데이터 10을 root 쪽으로 먼저 보냄
+    var appContent = {
+        template: '<div>content<br><br><button v-on:click="passNum">pass</button></div>',
+        methods:{
+            passNum : function(){
+                this.$emit('pass',10)
+
+            }
+
+        }
+    }
+
+
+    new Vue({
+        el : '#app',
+        components:{
+            'app-header' : appHeader,
+            'app-content' : appContent,
+        },
+
+        data : {
+            num : 0,
+        },
+        methods:{
+            deliverNum: function(value){
+                this.num = value;
+            }
+        }
+    })
+    
+    
+    
+    </script>
+
+
+
+</body>
+</html>

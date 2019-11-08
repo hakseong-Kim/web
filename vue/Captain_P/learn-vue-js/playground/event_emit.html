@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 목적 :  이벤트 발생은 컴포넌트 통신 방법 중 하위 컴포넌트에서 상위 컴포넌트로 통신하는 방식임-->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+    <div id="app">
+        {{num}}
+        <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름 : "상위 컴포넌트에서의 발생한 이벤트 이름"></app-header> -->
+        <app-header v-on:pass="logText"></app-header>
+        <app-content v-on:increase="addNumber"></app-content>
+
+    </div>
+    <script>
+        // 후반 부에 문법으로 배울 수 있겠지만, 
+        // 하위에서 컴포넌트에서 상위로 넘어갈 수 있다는게 무슨말인지 궁금하네...
+        var appHeader = {
+            template: '<button v-on:click="passEvent">click me</button>',
+            methods: {
+                passEvent: function () {
+                    this.$emit('pass');
+                }
+            }
+        }
+        var appContent = {
+            template: '<button v-on:click="addNumber">add</button>',
+            methods: {
+                addNumber: function () {
+                    this.$emit('increase')
+
+                }
+            }
+        }
+    
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header': appHeader,
+                'app-content': appContent,
+            },
+            methods: {
+                logText: function () {
+                    console.log('hi');
+                },
+                addNumber: function () {
+                    this.num = this.num + 1;
+                }
+
+
+                //add 버튼을 클릭했을 때, data에 들어가는 데이터의 값을 +1 하라는 것 임
+            },
+            data: {
+                num: 10
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>
