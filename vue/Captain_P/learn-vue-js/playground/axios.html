@@ -11,6 +11,7 @@
 <body>
     <div id="app">
         <button v-on:click="fetchData">get data</button>
+        <div>{{users}}</div>
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -19,14 +20,21 @@
 
 
     <script>
-        // vue에서 권고하는 http통신 라이브러리로서,promise 기반의 httpㅇ 통신 라이브러리라 볼 수 있다
+        // vue에서 권고하는 http통신 라이브러리로서,promise 기반의 http 통신 라이브러리라 볼 수 있다
         new Vue({
             el: '#app',
+            data:{
+                users: [] // 변수값 vm.data에 들어가는 값들이 여기에 들어가게 됨
+            },
             methods: {
                 fetchData: function () {
+                    /*여기서 진행하는 var vm = this; 를 선언을 해줘서 axios에서 호출하는 값을 잘 땡겨올 수 있도록 해줌 */
+
+                    var vm = this; 
                     axios.get('https://jsonplaceholder.typicode.com/users/')
                         .then(function (response) {
-                            console.log(response.data);
+                            console.log(response.data); // 이 데이터를 자바스크립트로 받으면 될 것 임
+                            vm.users = response.data;
                         })
                         .catch(function (error) {
                             console.log(error);

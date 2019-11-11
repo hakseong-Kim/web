@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{num}}
+        <button v-on:click="addNum"> inrease</button>
+
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            }, // watch 데이터의 변화에 따라 특정 로직을 선언 시킬수 있음
+            watch: {
+                num: function () {
+                    this.logText(); // 값이 자동적으로 변하는 것에 따라 logtext 함수를 출력하도록 설정을 함
+                }
+
+            },
+            methods: {
+                addNum: function () {
+                    this.num = this.num + 1; // 버튼을 클릭을 해서 해당 변수값의 값이 변하는 순간
+                },
+                logText: function () {
+                    console.log('changed');  // changed라는 로그를 출력하는 함수를 만드는데
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

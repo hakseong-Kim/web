@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <!--<p v-bind:id="uuid">{{num}}</p> -->
+        <!-- bind 속성은 해당 속성에서 id를 부여하고 싶을 때, 사용 함
+         => 직관적으로 연결을 하겠다는 뜻-->
+        <p v-bind:id="uuid" v-bind:class="name">{{num}}</p>
+        <p>{{doubleNum}}</p>
+        <!--v-if="loading" 실제로 보이지 않게끔 지정이 됨,-->
+        <div v-if="loading">
+            <!--로그인 중일 때 이 문구 표시-->
+            Loading.....
+        </div>
+
+        <div v-else>
+            <!--로그인이 되었을 때 이 문구 표시-->
+            test user been logged in
+        </div>
+
+        <div v-show="loading"> <!--v-show="loading"은 display에 none 표시를 해서 안보이도록만 되도록 설정됨-->
+            <!--로그인이 되었을 때 이 문구 표시-->
+            Loading.....
+        </div>
+
+        <!--todo : 인풋 박스를 만들고, 입력된 값을 p태그에 출력해보세요-->
+        <div>
+            <input type="text" v-model="message">
+            <p>Message is: {{ message }}</p>
+
+
+        </div>
+        
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                uuid: 'abc1234', // uuid 를 대명사로 사용하는 것 같음
+                name: 'text-blue',
+                loading: true,
+                message: '', // 입력된 값을 데이터로 저장
+            },
+            computed: {
+                doubleNum: function () {
+                    return this.num * 2;
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
