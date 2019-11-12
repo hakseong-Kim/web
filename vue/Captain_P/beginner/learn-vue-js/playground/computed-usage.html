@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+        .warning {
+            color: red;
+        }
+    </style>
+<!-- 스타일 시트 값 지정-->
+</head>
+
+<body>
+    <div id="app">
+        <p v-bind:class = "{ warning : isError}"> hello world!</p>
+        <p v-bind:class = "errorTextColor"> hello world!</p>
+        <p v-bind:class = "cname"> hello world!</p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+    new Vue({
+        el : '#app',
+        data : {
+            cname : 'blue-text',
+            isError : false
+        },
+        computed: { // 이 속성은 템플릿의 데이터 표현을 더 직관적으로 하게 해주는 속성임
+            errorTextColor : function(){
+                return this.isError ? 'warning' : null;
+                
+            }
+        }
+
+    })
+    
+    
+    </script>
+
+</body>
+
+</html>

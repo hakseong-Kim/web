@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        {{num}}
+
+
+    </div>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+
+    <script>
+        //computed 가 watch 보다 사용하는걸 권장을 한다 - watch를 사용했을 때, 소스가 너저분해보인다는 얘기가 있음
+
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+            },
+            computed: {
+                doubleNum: function () {
+                    return this.num * 2;
+                }
+            },
+            watch : { 
+                num : function(newValue, oldValue){
+                    this.fetchUserByNumber(newValue); //1. 데이터의 변화가 발생했을떄, 함수발생
+                }
+
+            },
+            methods: { 
+                fetchUserByNumber : function(num) { // 2. 함수를 발생시켜 로그를
+                    //console.log(num);
+                    //axios.get(num);
+                                }
+
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
