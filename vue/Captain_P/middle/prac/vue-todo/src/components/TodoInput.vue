@@ -7,30 +7,61 @@
       <i class="fas fa-plus addBtn"></i>
     </span>
     <!-- <button v-on:click="ClearTodo">delete</button> -->
+
+    <Modal v-if="showModal" @close="showModal = false">
+      <!--
+      you can use custom content here to overwrite
+      default content
+      -->
+      <!-- 첫 등장하는 슬롯, 특정 컴포넌트의 일부 UI를 재사용할 수 있다는 장점을 가지고 있다, -->
+      <!-- 여기서 말하는 모델이 파일을 가져오는 그 모델인가? -> 컴포넌트화를 시켜서 가지고 오는 것 같은데-->
+      <h3 slot="header">경고!</h3>
+      <h3 slot="body">무언가를 입력하세요</h3>
+      <div slot="footer">
+           <h3>입력안하면 엉덩이에 불난다옹</h3>
+           <i class="fas fa-times closeModelBtn" @click="showModal = false"></i>
+           <!-- @click == v-on:click -->
+           <!-- <button class="modal-default-button" v-on:click="addTodo"></button> -->
+      
+      </div>
+      
+      
+    </Modal>
   </div>
+
+  <!-- vue에서 지향하는 바는 root 컴포넌트 안에 만들어 주는 html태그 하나만 만들어 주는게 좋다 -->
 </template>
 
 <script>
+import Modal from "./common/Modal.vue";
+
 export default {
   data: function() {
     return {
-      newTodoItem: ""
+      newTodoItem: "",
+      showModal: false
     };
   },
   methods: {
     addTodo: function() {
       if (this.newTodoItem !== "") {
         //   this.$emit('이벤트 이름', '인자1', '인자2' ....)
-          this.$emit('addTodoItem', this.newTodoItem) 
-          //addTodoItem 이라는 이벤트를 발생을 시키고 newTotoItem이라는 데이터값을 보낸다
-          //
-          this.clearInput();
+        this.$emit("addTodoItem", this.newTodoItem);
+        //addTodoItem 이라는 이벤트를 발생을 시키고 newTotoItem이라는 데이터값을 보낸다
+        //
+        this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
       }
     },
 
     clearInput: function() {
       this.newTodoItem = "";
     }
+  },
+  components: {
+    // input 하위에 있는 컴포넌트 model 을 추가한다
+    Modal: Modal
   }
 };
 </script>
@@ -64,4 +95,16 @@ input:focus {
   color: white;
   vertical-align: middle;
 }
+
+
+.modal-default-button {
+  float: right;
+}
+
+.closeModelBtn{
+    color :  #42b983;
+}
+
+
+
 </style>

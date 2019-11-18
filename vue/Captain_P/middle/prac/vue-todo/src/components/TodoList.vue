@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- ul>il*3 -> tab 기능이 마음이 드는구만 -->
-    <ul>
+    <transition-group name="list" tag="ul">
+      <!-- ul>il*3 -> tab 기능이 마음이 드는구만 -->
       <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
         <i
           class="checkBtn fas fa-check"
@@ -13,9 +13,9 @@
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
+    </transition-group>
 
-      <!-- {{this.var}} -->
-    </ul>
+    <!-- {{this.var}} -->
   </div>
 </template>
 
@@ -28,14 +28,14 @@ export default {
       this.$emit("removeItem", todoItem, index);
     },
     toggleComplete: function(todoItem, index) {
-        this.$emit("toggleItem", todoItem, index);
+      this.$emit("toggleItem", todoItem, index);
     }
   }
 };
 </script>
 
 <style scoped>
-ul{
+ul {
   list-style-type: none; /* 앞의 특수기호를 제거해줌 */
   padding-left: 0px; /* 해당 엘리먼트의 왼쪽 여백값을 지정을 함*/
   margin-top: 0;
@@ -69,5 +69,14 @@ li {
 .textCompleted {
   text-decoration: line-through;
   color: #b3adad;
+}
+/* 리스트 아이템 트랜지션 효과 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
