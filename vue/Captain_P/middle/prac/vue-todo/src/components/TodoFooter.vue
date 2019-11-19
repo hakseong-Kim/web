@@ -9,7 +9,7 @@
 <script>
     export default {
         methods: {
-            clearTodo : function(){
+            clearTodo(){
                 console.log("clear1111");
                 this.$emit('clearItem');
             }
@@ -33,7 +33,7 @@
     color: #e20303;
     display : block;
 }
-
+ 
 
 
 </style>

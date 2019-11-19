@@ -22,23 +22,23 @@ import TodoFooter from "./components/TodoFooter.vue";
 //리펙토링 : 각 컴포넌트의 vue 파일에서 동작하던 애들을 하나둘씩 App.vue 파일에서 작동이 되도록 설정을 함
 
 export default {
-  data: function() {
+  data() {
     return {
       todoItems: []
     };
   },
   methods: {
-    addOneItem: function(todoItem) {
-      var obj = {
+    addOneItem(todoItem) {
+      const obj = {
         completed: false,
         item: todoItem
-      };
+      }; 
 
       console.log(todoItem); // this는 해당 인스턴스 안에 들어가 있다고 보면됨
       localStorage.setItem(todoItem, JSON.stringify(obj));
       this.todoItems.push(obj);
     },
-    clearItems: function() {
+    clearItems() {
       console.log("clear");
       alert('hi');
       //this.todoItems.splice(0,this.todoItems.length);
@@ -46,12 +46,12 @@ export default {
       localStorage.clear();
     },
 
-    removeOneItem: function(todoItem, index) {
+    removeOneItem(todoItem, index) {
        localStorage.removeItem(todoItem.item);
        this.todoItems.splice(index, 1);
     },
 
-    toggleChange : function(todoItem, index) { 
+    toggleChange (todoItem, index) { 
       // todoItem.completed = !todoItem.completed;
       this.todoItems[index].completed = !this.todoItems[index].completed; 
       
@@ -63,7 +63,7 @@ export default {
     
   },
 
-  created: function() {
+  created() {
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
@@ -76,12 +76,14 @@ export default {
   },
 
   components: {
-    TodoHeader: TodoHeader,
-    TodoInput: TodoInput,
-    TodoList: TodoList,
-    TodoFooter: TodoFooter
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
   }
 };
+
+
 </script>
 
 <style>

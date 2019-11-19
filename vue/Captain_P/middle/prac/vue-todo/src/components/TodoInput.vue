@@ -18,14 +18,20 @@
       <h3 slot="header">경고!</h3>
       <h3 slot="body">무언가를 입력하세요</h3>
       <div slot="footer">
-           <h3>입력안하면 엉덩이에 불난다옹</h3>
-           <i class="fas fa-times closeModelBtn" @click="showModal = false"></i>
-           <!-- @click == v-on:click -->
-           <!-- <button class="modal-default-button" v-on:click="addTodo"></button> -->
-      
+        <h3>입력안하면 엉덩이에 불난다옹</h3>
+        <i class="fas fa-times closeModelBtn" @click="showModal = false"></i>
+        <!-- @click == v-on:click -->
+        <!-- <button class="modal-default-button" v-on:click="addTodo"></button> -->
       </div>
-      
-      
+    </Modal>
+
+    <Modal v-if="showModalError" @close="showModalError = false">
+      <h3 slot="header">경고!</h3>
+      <h3 slot="body">같은 문구를 입력하시면 안됩니다</h3>
+      <div slot="footer">
+        <h3>입력된 것 보다 다른문구를 입력해주세요</h3>
+        <i class="fas fa-times closeModelBtn" @click="showModalError = false"></i>
+      </div>
     </Modal>
   </div>
 
@@ -36,32 +42,40 @@
 import Modal from "./common/Modal.vue";
 
 export default {
-  data: function() {
+  data() {
     return {
       newTodoItem: "",
-      showModal: false
+      showModal: false,
+      showModalError: false,
+      data: ""
     };
   },
   methods: {
-    addTodo: function() {
+    addTodo() {
+      this.data = localStorage.getItem(this.newTodoItem);
+      console.log(this.data);
       if (this.newTodoItem !== "") {
-        //   this.$emit('이벤트 이름', '인자1', '인자2' ....)
-        this.$emit("addTodoItem", this.newTodoItem);
-        //addTodoItem 이라는 이벤트를 발생을 시키고 newTotoItem이라는 데이터값을 보낸다
-        //
-        this.clearInput();
+        if (this.data !== null) {
+          this.showModalError = !this.showModalError;
+        } else {
+          //   this.$emit('이벤트 이름', '인자1', '인자2' ....)
+          this.$emit("addTodoItem", this.newTodoItem);
+          //addTodoItem 이라는 이벤트를 발생을 시키고 newTotoItem이라는 데이터값을 보낸다
+          //
+          this.clearInput();
+        }
       } else {
         this.showModal = !this.showModal;
       }
     },
 
-    clearInput: function() {
+    clearInput() {
       this.newTodoItem = "";
     }
   },
   components: {
     // input 하위에 있는 컴포넌트 model 을 추가한다
-    Modal: Modal
+    Modal,
   }
 };
 </script>
@@ -96,15 +110,11 @@ input:focus {
   vertical-align: middle;
 }
 
-
 .modal-default-button {
   float: right;
 }
 
-.closeModelBtn{
-    color :  #42b983;
+.closeModelBtn {
+  color: #42b983;
 }
-
-
-
 </style>
