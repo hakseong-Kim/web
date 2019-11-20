@@ -18,7 +18,6 @@ import TodoFooter from "./components/TodoFooter.vue";
 
 // 여기는 그럼 root 가 있는 쪽이라 봐야하는게 맞겠지
 
-
 //리펙토링 : 각 컴포넌트의 vue 파일에서 동작하던 애들을 하나둘씩 App.vue 파일에서 작동이 되도록 설정을 함
 
 export default {
@@ -104,3 +103,6 @@ button {
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
 }
 </style>
+
+
+오늘 V2에 대한 어늦어도 정ㅈ보가 

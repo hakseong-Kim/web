@@ -23,7 +23,7 @@
         <!-- @click == v-on:click -->
         <!-- <button class="modal-default-button" v-on:click="addTodo"></button> -->
       </div>
-    </Modal>
+    </Modal> 
 
     <Modal v-if="showModalError" @close="showModalError = false">
       <h3 slot="header">경고!</h3>

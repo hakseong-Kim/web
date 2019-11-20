@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
+import {store} from './store/store.js'
 
 new Vue({
   el: '#app',
+  store : store, // stroe만 사용해도 문제가 없음(축약 속성)
   render: h => h(App)
 })
 
