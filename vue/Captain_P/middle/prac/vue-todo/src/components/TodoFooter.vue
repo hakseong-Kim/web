@@ -11,7 +11,8 @@
         methods: {
             clearTodo(){
                 console.log("clear1111");
-                this.$emit('clearItem');
+                this.$store.commit('clearItems');
+                // this.$emit('clearItem');
             }
 
         }

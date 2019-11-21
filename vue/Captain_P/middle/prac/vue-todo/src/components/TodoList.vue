@@ -2,7 +2,12 @@
   <div>
     <transition-group name="list" tag="ul">
       <!-- ul>il*3 -> tab 기능이 마음이 드는구만 -->
-      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow">
+      <!-- this.$store.state.todoItems 참고 -->
+      <li
+        v-for="(todoItem, index) in this.$store.state.todoItems"
+        v-bind:key="todoItem.item"
+        class="shadow"
+      >
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{checkBtnCompleted : todoItem.completed}"
@@ -21,14 +26,28 @@
 
 <script>
 export default {
-  props: ["propsdata"],
+  //   props: ["propsdata"], 전역으로 쓰기때문에 사용하지 않음
 
   methods: {
     removeTodo(todoItem, index) {
-      this.$emit("removeItem", todoItem, index);
+      //   this.$emit("removeItem", todoItem, index);
+      //   const obj = {
+      //     todoItem,
+      //     index
+      //   };
+      // this.$store.commit("removeOneItem", obj); // 이렇게 정석적으로 넣는게 가능하고,
+      //ES6에 따라 obj을 선언하지 않고, {todoItem,index}으로 선언을 할 수 있다.
+
+      console.log("obj : " + { todoItem, index });
+      this.$store.commit("removeOneItem", { todoItem, index });
     },
     toggleComplete(todoItem, index) {
-      this.$emit("toggleItem", todoItem, index);
+      //   const obj = {
+      //     todoItem,
+      //     index
+      //   };
+      //   this.$emit("toggleItem", todoItem, index);
+      this.$store.commit("toggleChange", { todoItem, index });
     }
   }
 };

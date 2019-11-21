@@ -59,7 +59,9 @@ export default {
           this.showModalError = !this.showModalError;
         } else {
           //   this.$emit('이벤트 이름', '인자1', '인자2' ....)
-          this.$emit("addTodoItem", this.newTodoItem);
+        //   this.$emit("addTodoItem", this.newTodoItem);
+        const text = this.newTodoItem.trim();
+        this.$store.commit('addOneItem', text);
           //addTodoItem 이라는 이벤트를 발생을 시키고 newTotoItem이라는 데이터값을 보낸다
           //
           this.clearInput();
