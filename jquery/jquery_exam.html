@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.exam.js"> </script>
+
+    <style type="text/css">
+        #navigation li {
+            list-style: none;
+            float: left;
+            padding: 5px;
+        }
+
+        #navigation {
+            cursor: pointer;
+        }
+
+        #navigation .selected {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="navigation">
+        <li class="testli">HTML</li>
+        <li>CSS</li>
+        <li id="select">javascript</li>
+        <li class="selected">jQuery</li>
+        <li>PHP</li>
+        <li>mysql</li>
+    </ul>
+    <br><br>
+    <div id="navigation2">
+        navigation2 yellow
+        <a href="http://www.naver.com">naver.com (No Target)</a><br />
+        <a href="http://www.naver.com" target="_blank">naver.com (Target)</a><br />
+        <a href="http://www.hoons.kr">Hoons.NET (No Target)</a><br />
+        <a href="http://www.hoons.kr" target="_blank">Hoons.NET (Target)</a><br />
+        <a href="http://www.hows.kr">HowsNET (No Target)</a><br />
+    </div>
+    <div id="navigation3">
+        <ul class="siteUrl" id="siteUrl">
+            <li>Sqler : http://www.sqler.com</li>
+            <li>jQuery : http://jquery.com</li>
+            <li>
+                <ul>
+                    <li>Blog : http://www.hows.kr</li>
+                    <li>Community : http://www.hoons.kr</li>
+                </ul>
+            </li>
+            <li>Items</li>
+            <li>Items</li>
+            <li>Items</li>
+        </ul>
+    </div>
+
+    <div id="navigation4">
+        <form>
+            <label>Name:</label>
+            <input name="name" />
+            <fieldset>
+                <label>Newsletter:</label>
+                <input name="newsletter" />
+            </fieldset>
+        </form>
+        <input name="none" />
+    </div>
+
+    <div id="navigation5">
+        <div>div (doesn't match since before #prev)</div>
+        <span id="prev">span#prev</span>
+        <div>div sibling</div>
+        <div>div sibling
+            <div id="small">div niece</div>
+        </div>
+        <span>span sibling (not div)</span>
+        <div>div sibling</div>
+    </div>
+
+    <div id="navigation6">
+        <table>
+            <tr>
+                <td>#1</td>
+                <td>#2</td>
+                <td>#3</td>
+                <td>#4</td>
+                <td>#5</td>
+                <td>#6</td>
+                <td>#7</td>
+                <td>#8</td>
+                <td>#9</td>
+                <td>#10</td>
+            </tr>
+            <tr>
+                <td>#11</td>
+                <td>#12</td>
+                <td>#13</td>
+                <td>#14</td>
+                <td>#15</td>
+                <td>#16</td>
+                <td>#17</td>
+                <td>#18</td>
+                <td>#19</td>
+                <td>#20</td>
+            </tr>
+            <tr>
+                <td>#21</td>
+                <td>#22</td>
+                <td>#23</td>
+                <td>#24</td>
+                <td>#25</td>
+                <td>#26</td>
+                <td>#27</td>
+                <td>#28</td>
+                <td>#29</td>
+                <td>#30</td>
+            </tr>
+            <tr>
+                <td>#31</td>
+                <td>#32</td>
+                <td>#33</td>
+                <td>#34</td>
+                <td>#35</td>
+                <td>#36</td>
+                <td>#37</td>
+                <td>#38</td>
+                <td>#39</td>
+                <td>#40</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="navigation7">
+        <ul>
+            <li><input type="checkbox" checked="checked" />CheckBox #1 - </li>
+            <li><input type="checkbox" />CheckBox #2</li>
+            <li><input type="checkbox" checked="checked" />CheckBox #3</li>
+        </ul>
+        <select multiple="multiple">
+            <option>Option #1</option>
+            <option selected="selected">Option #2</option>
+            <option>Option #3</option>
+        </select>
+    </div>
+
+
+    <div id="navigation8">
+        <table>
+            <tr>
+                <td>#1</td>
+                <td>#2</td>
+                <td>#3</td>
+                <td>#4</td>
+                <td>#5</td>
+            </tr>
+            <tr>
+                <td>#6</td>
+                <td>#7</td>
+                <td>#8</td>
+                <td>#9</td>
+                <td>#10</td>
+            </tr>
+            <tr>
+                <td>#11</td>
+                <td>#12</td>
+                <td>#13</td>
+                <td>#14</td>
+                <td>#15</td>
+            </tr>
+            <tr>
+                <td>#16</td>
+                <td>#17</td>
+                <td>#18</td>
+                <td>#19</td>
+                <td>#20</td>
+            </tr>
+            <tr>
+                <td>#21</td>
+                <td>#22</td>
+                <td>#23</td>
+                <td>#24</td>
+                <td>#25</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
